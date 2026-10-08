@@ -128,20 +128,25 @@ vibe = VibeProfile(
         "mistral-large-4",
         "codestral-latest",
     ),
-    model_aliases={
-        "vibe": "mistral-vibe-cli-latest",
-        "fast": "mistral-vibe-cli-fast",
-        "glm": "zai-glm-5-3",
-    },
     supports_vision=True,
     default_aux_model="mistral-small-latest",
-    model_capabilities={
-        "mistral-large-4": {"supports_tools": True, "supports_vision": True, "context_window": 1_000_000},
-        "zai-glm-5-3": {"supports_tools": True, "context_window": 1_000_000},
-        "mistral-medium-latest": {"supports_tools": True, "supports_vision": True, "context_window": 256_000},
-        "mistral-small-latest": {"supports_tools": True, "supports_vision": True, "context_window": 256_000},
-        "codestral-latest": {"supports_tools": True, "context_window": 256_000},
-    },
 )
+
+# Hermes 0.21.x keeps compatibility metadata as instance attributes rather
+# than ProviderProfile constructor arguments. Assigning these after
+# construction also remains compatible with newer runtimes that consume the
+# same metadata attributes.
+vibe.__dict__["model_aliases"] = {
+    "vibe": "mistral-vibe-cli-latest",
+    "fast": "mistral-vibe-cli-fast",
+    "glm": "zai-glm-5-3",
+}
+vibe.__dict__["model_capabilities"] = {
+    "mistral-large-4": {"supports_tools": True, "supports_vision": True, "context_window": 1_000_000},
+    "zai-glm-5-3": {"supports_tools": True, "context_window": 1_000_000},
+    "mistral-medium-latest": {"supports_tools": True, "supports_vision": True, "context_window": 256_000},
+    "mistral-small-latest": {"supports_tools": True, "supports_vision": True, "context_window": 256_000},
+    "codestral-latest": {"supports_tools": True, "context_window": 256_000},
+}
 
 register_provider(vibe)
