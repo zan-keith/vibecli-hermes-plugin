@@ -4,6 +4,10 @@ A Hermes model-provider plugin that routes requests through your Mistral Vibe
 plan key. Usage counts against your Vibe subscription quota instead of
 pay-as-you-go API credits.
 
+For a detailed walkthrough — including what the plugin does, prerequisites,
+step-by-step install, verification, and troubleshooting — see
+**[docs/SETUP.md](docs/SETUP.md)**.
+
 The plugin uses the official Mistral API at `https://api.mistral.ai/v1` with
 the same key the official Vibe CLI stores in `~/.vibe/.env`. No proxy or extra
 service is required.
