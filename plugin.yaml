@@ -1,5 +1,5 @@
 name: vibe-cli-provider
 kind: model-provider
-version: 1.0.0
+version: 1.0.1
 description: Mistral Vibe CLI (Vibe plan key, official Mistral API)
-author: you
+author: zan-keith
